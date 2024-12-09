@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>팥빙수 만들기</title>
+</head>
+<body>
+<h1>팥빙수 생성</h1>
+<form th:action="@{/patbingsu}" th:object="${patbingsu}" method="post">
+  <label for="name">팥빙수 이름:</label>
+  <input id="name" th:field="*{name}" />
+  <br />
+  <label for="description">팥빙수 설명:</label>
+  <input id="description" th:field="*{description}" />
+  <br />
+  <label for="price">팥빙수 가격:</label>
+  <input id="price" type="number" th:field="*{price}" />
+  <br />
+  <button type="submit">저장</button>
+</form>
+</body>
+</html>

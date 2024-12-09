@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>Patbingsu List</h1>
+<a href="/patbingsu/new">Create New</a>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+  </tr>
+  <tr th:each="patbingsu : ${patbingsus}">
+    <td th:text="${patbingsu.name}"></td>
+    <td th:text="${patbingsu.description}"></td>
+    <td th:text="${patbingsu.price}"></td>
+  </tr>
+</table>
+</body>
+</html>
