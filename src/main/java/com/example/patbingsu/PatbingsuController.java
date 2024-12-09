@@ -31,4 +31,20 @@ public class PatbingsuController {
     repository.save(patbingsu);
     return "redirect:/patbingsu";
   }
+
+  @GetMapping("/{id}/delete")
+  public String delete(@PathVariable Long id) {
+    repository.deleteById(id);
+    return "redirect:/patbingsu";
+  }
+
+  @PostMapping("/{id}/update")
+  public String update(@PathVariable Long id, @RequestParam int price) {
+    Patbingsu patbingsu = repository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid Patbingsu ID:" + id));
+    patbingsu.setPrice(price);
+    repository.save(patbingsu);
+    return "redirect:/patbingsu";
+  }
+
+
 }

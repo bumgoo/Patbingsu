@@ -3,20 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <title>팥빙수 목록</title>
+  <script>
+    // 삭제 확인
+    function confirmDelete(patbingsuName) {
+      return confirm(patbingsuName + "을(를) 삭제하시겠습니까?");
+    }
+
+    // 수정 확인
+    function confirmUpdate(patbingsuName) {
+      return confirm(patbingsuName + "의 가격을 수정하시겠습니까?");
+    }
+  </script>
 </head>
 <body>
 <h1>팥빙수 목록</h1>
 <a href="/patbingsu/new">새 팥빙수 추가</a>
-<table>
+<table border="1">
   <tr>
     <th>이름</th>
     <th>설명</th>
     <th>가격</th>
+    <th>삭제</th>
   </tr>
   <tr th:each="patbingsu : ${patbingsus}">
     <td th:text="${patbingsu.name}"></td>
     <td th:text="${patbingsu.description}"></td>
-    <td th:text="${patbingsu.price}"></td>
+    <!-- 가격 수정 -->
+    <td>
+      <form th:action="@{/patbingsu/{id}/update(id=${patbingsu.id})}" method="post"
+            onsubmit="return confirmUpdate('${patbingsu.name}')">
+        <input type="number" th:value="${patbingsu.price}" name="price" />
+        <button type="submit">수정</button>
+      </form>
+    </td>
+    <!-- 삭제 -->
+    <td>
+      <a href="#" th:href="@{/patbingsu/{id}/delete(id=${patbingsu.id})}"
+         onclick="if (!confirmDelete('${patbingsu.name}')) return false;">삭제</a>
+    </td>
   </tr>
 </table>
 </body>
