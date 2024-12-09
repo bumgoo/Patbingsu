@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>팥빙수 목록</title>
+</head>
 <body>
-<h1>Patbingsu List</h1>
-<a href="/patbingsu/new">Create New</a>
+<h1>팥빙수 목록</h1>
+<a href="/patbingsu/new">새 팥빙수 추가</a>
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
+    <th>이름</th>
+    <th>설명</th>
+    <th>가격</th>
   </tr>
   <tr th:each="patbingsu : ${patbingsus}">
     <td th:text="${patbingsu.name}"></td>
